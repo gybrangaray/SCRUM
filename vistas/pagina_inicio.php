@@ -15,14 +15,14 @@
     <link rel="stylesheet" href="../plugins/sweetalert2/sweetalert2.min.css">
     <title>Login/Logout</title>
 </head>
-<body class="">
+<body >
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="junbotron">
-                    <h1 class="display-4 text-center">¡Bienvenido!</h1>
+                <div class="junbotron text-center">
+                    <h1 class="display-4 ">¡Bienvenido!</h1>
                     <h2 class="text-center">Usuario: <span class="badge badge-primary"><?php echo $_SESSION["s_usuario"]; ?></span></h2>
-                    <a class="btn btn-danger btn-lg" href="../bd/logout.php" role="button">Cerrar sesón</a>
+                    <a  class="btn btn-danger btn-lg center-block" href="../bd/logout.php" role="button">Cerrar sesón</a>
                 </div>
             </div>
         </div>
