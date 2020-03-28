@@ -1,12 +1,21 @@
-body{
+.inicioSesion{
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #114c99, #749ed4);
+    background: linear-gradient(to right, #cbd6e4, #ffffff); /*to right, #114c99, #749ed4*/
 }
 #login .container #login-row #login-column #login-box{
     margin-top: 70px;
-    max-width: 600px;
-    height: 300px;
+    margin-left: 23%;
+    width: 300px;
+    height: 400px;
     box-shadow: 5px 5px 5px;
+    border-radius: 5px;
+}
+#login .container #login-row #login-column #login-box:hover{
+    margin-top: 70px;
+    margin-left: 23%;
+    width: 300px;
+    height: 400px;
+    box-shadow: 7px 7px 7px;
     border-radius: 5px;
 }

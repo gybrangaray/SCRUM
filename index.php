@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
     <title>Login/Logout</title>
 </head>
-<body>
+<body class="inicioSesion">
     <div id="login">
     <h3 class="text-center text-white display-4">Login/Logout</h3>
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6 ">
                  <div id="login-box" class="col-md-12 bg-light text-dark">
-                    <form id="formLogin" class="form" action="" method="post"> <!--FORMULARIO-->
+                    <form id="formLogin" class="form" action="" method="POST"> <!--FORMULARIO-->
                         <h3 class="text-center text-dark">Iniciar sesión</h3>
                         <div class="form-group">
                             <label for="usuario" class="text-dark">Usuario</label> <!--USUARIO-->
@@ -26,7 +26,7 @@
                             <input type="password" name="contraseña" id="contraseña" class="form-control">
                         </div>
 
-                        <div class="form-group text-center">
+                        <div class="form-gropu text-center">
                             <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="iniciar">
                         </div>
                     </form>
