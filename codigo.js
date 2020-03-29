@@ -6,7 +6,7 @@ $('#formLogin').submit(function(e)//Referencia al formulario
     
     if(usuario.length == "" || contraseña == ""){
         let timerInterval
-        swal.fire({          //implementacion de sweetalert2
+        swal.fire({          //logeo warning
             icon:'warning',
             title:"Debe ingresar usuario y/o contraseña",
             // html: ' <b></b> ', //no se si dejar el contador o quitarlo
@@ -42,14 +42,14 @@ $('#formLogin').submit(function(e)//Referencia al formulario
             data: {usuario:usuario, contraseña:contraseña},
             success:function(data) //este data es lo que vamos a generar en login.php y enviar por JSON
             {
-                if(data == "null"){
+                if(data == "null"){   //logeo error
                     Swal.fire({
                         icon: 'error',
                         title:  'Usuario y/o contraseña incorrectos',
                         footer: '<a href>Recordar usuario y/o contraseña</a>'
                       })
                 }else{
-                    swal.fire({          //implementacion de sweetalert2
+                    swal.fire({          //logeo exitoso
                         icon:'success',
                         title:"¡Exito!",
                         confirmButtonColor:"#114c99",

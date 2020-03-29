@@ -11,11 +11,11 @@
 <body class="inicioSesion">
     <div id="login">
     <h3 class="text-center text-white display-4">Login/Logout</h3>
-    <div class="container">
+    <div class="container ">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6 ">
                  <div id="login-box" class="col-md-12 bg-light text-dark">
-                    <form id="formLogin" class="form" action="" method="POST"> <!--FORMULARIO-->
+                    <form id="formLogin" class="form " action="" method="POST"> <!--FORMULARIO-->
                         <h3 class="text-center text-dark">Iniciar sesión</h3>
                         <div class="form-group">
                             <label for="usuario" class="text-dark">Usuario</label> <!--USUARIO-->
@@ -29,8 +29,18 @@
                         <div class="form-gropu text-center">
                             <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="iniciar">
                         </div>
+                        <br>
+                        <div id="UserContra" class="form-gropu text-center"> 
+                            <a href>Recordar usuario y/o contraseña</a>
+                        </div>
+                        <hr>
+                        <div id="UserContra" class="form-gropu text-center"> 
+                        <br>
+                        <em id="copyright"><p>&copy; 2020 gybrangaray@gmail.com<p></em>
+                        </div>
                     </form>
-                </div>
+                  
+                </div> 
 
             </div>
         </div>
