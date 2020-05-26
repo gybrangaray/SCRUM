@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
-    <title>Login/Logout</title>
+    <title>SISINFO | Ingresar</title>
 </head>
 <body class="inicioSesion">
     <div id="login">
