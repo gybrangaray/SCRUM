@@ -35,14 +35,14 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
     <img src="https://i.imgur.com/iO8Ro4y.jpg" width="30" height="30" style="border-radius:50%" class="d-inline-block align-top" alt="sistema">
     Sistemas de información
   </a>
-  <h4 class="display-8 ">¡Bienvenido Usuario: <span class="badge badge-primary"><?php echo $_SESSION["s_usuario"]; ?></span>!</h4>
-                    <a  class="btn btn-danger btn-lg center-block" href="../bd/logout.php" role="button">Cerrar sesón</a>
+  <h4 class="display-8 ">¡Bienvenido Usuario: <span class="badge badge-success"><?php echo $_SESSION["s_usuario"]; ?></span>!</h4>
+                    <a  class="btn btn-outline-danger btn-sm center-block" href="../bd/logout.php" role="button">Cerrar sesón</a>
 </nav>
     </header>
     <div class="container">  
         <div class="row">
             <div class="col-lg-12"><br>
-                <button id="btnNuevo" type="button" class="btn btn-success" title="Agregar nuevo">
+                <button id="btnNuevo" type="button" class="btn btn-outline-success" title="Agregar nuevo">
                     <i class="fas fa-user-plus"></i> 
                 </button> <!--Boton nuevo y se le agrega Id por que es unico -->
             </div>
@@ -76,10 +76,10 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                                           <td>
                                         <div class="text-center">
                                                   <div class="btn-group">
-                                                      <button class="btn btn-primary btnEditar" title="Editar">
+                                                      <button class="btn btn-outline-primary btnEditar" title="Editar">
                                                         <i class="fa fa-edit"></i>
                                                       </button><!--Al boton editar seran muchos generados dinamicamente por JS y se le agrega clase en ves id -->
-                                                      <button class="btn btn-danger btnEliminar" title="Eliminar">
+                                                      <button class="btn btn-outline-danger btnEliminar" title="Eliminar">
                                                         <i class="fas fa-trash-alt"></i>
                                                       </button> <!--Boton Eliminar-->
                                                   </div>

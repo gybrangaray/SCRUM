@@ -9,8 +9,15 @@
     <title>SISINFO | Ingresar</title>
 </head>
 <body class="inicioSesion">
+<header>
+    <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="https://i.imgur.com/iO8Ro4y.jpg" width="30" height="30" style="border-radius:50%" class="d-inline-block align-top" alt="sistema">
+    Sistemas de información
+  </a>
+</nav>
+    </header>
     <div id="login">
-    <h3 class="text-center text-white display-4">Login/Logout</h3>
     <div class="container ">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6 ">
@@ -19,15 +26,15 @@
                         <h3 class="text-center text-dark">Iniciar sesión</h3>
                         <div class="form-group">
                             <label for="usuario" class="text-dark">Usuario</label> <!--USUARIO-->
-                            <input type="text" name="usuario" id="usuario" class="form-control">
+                            <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario"> 
                         </div>
                         <div class="form-group">
                             <label for="contraseña" class="text-dark">Contraseña</label>  <!--CONTRASEÑA-->
-                            <input type="password" name="contraseña" id="contraseña" class="form-control">
+                            <input type="password" name="contraseña" id="contraseña" class="form-control" placeholder="Contraseña">
                         </div>
 
                         <div class="form-gropu text-center">
-                            <input type="submit" name="submit" class="btn btn-dark btn-lg btn-block" value="iniciar">
+                            <input type="submit" name="submit" class="btn btn-outline-dark btn-lg btn-block" value="iniciar">
                         </div>
                         <br>
                         <div id="UserContra" class="form-gropu text-center"> 
