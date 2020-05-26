@@ -57,7 +57,8 @@ $('#formLogin').submit(function(e)//Referencia al formulario
                     }).then((result) =>  //aqui se captura el resultado
                      {
                         if(result.value){
-                            window.location.href = "vistas/pagina_inicio.php";//redireccionamiento a pagina_inicio.php
+                           /*  window.location.href = "vistas/pagina_inicio.php"; */ //redireccionamiento a pagina_inicio.php
+                               window.location.href =  "crud/index.php";                //redireccionamiento a crud/index.php
                         }
                      })  
                 }
