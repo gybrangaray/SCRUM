@@ -39,12 +39,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `contraseña`) VALUES
-(1, 'admin', '81dc9bdb52d04dc20036dbd8313ed055'),
-(2, 'Gybran', '81dc9bdb52d04dc20036dbd8313ed055'),
-(3, 'Ivan', '81dc9bdb52d04dc20036dbd8313ed055'),
-(4, 'Osvaldo', '81dc9bdb52d04dc20036dbd8313ed055'),
-(5, 'Willy', '81dc9bdb52d04dc20036dbd8313ed055'),
-(6, 'Fernando', '81dc9bdb52d04dc20036dbd8313ed055');
+(1, 'Administrador', '81dc9bdb52d04dc20036dbd8313ed055'),
+(2, 'Gybran', '81dc9bdb52d04dc20036dbd8313ed055');
+
 
 --
 -- Índices para tablas volcadas
