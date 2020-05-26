@@ -30,22 +30,18 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
 </head>
 <body>
     <header>
-        <h4 class="text-center text-light"><span class="badge badge-danger">Sistemas de información "CRUD"</span></h4>
-    </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="junbotron text-center">
-                    <h1 class="display-4 ">¡Bienvenido!</h1>
-                    <h2 class="text-center">Usuario: <span class="badge badge-primary"><?php echo $_SESSION["s_usuario"]; ?></span></h2>
+    <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="https://i.imgur.com/iO8Ro4y.jpg" width="30" height="30" style="border-radius:50%" class="d-inline-block align-top" alt="sistema">
+    Sistemas de información
+  </a>
+  <h4 class="display-8 ">¡Bienvenido Usuario: <span class="badge badge-primary"><?php echo $_SESSION["s_usuario"]; ?></span>!</h4>
                     <a  class="btn btn-danger btn-lg center-block" href="../bd/logout.php" role="button">Cerrar sesón</a>
-                </div>
-            </div>
-        </div>
-    </div>
+</nav>
+    </header>
     <div class="container">  
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12"><br>
                 <button id="btnNuevo" type="button" class="btn btn-success" title="Agregar nuevo">
                     <i class="fas fa-user-plus"></i> 
                 </button> <!--Boton nuevo y se le agrega Id por que es unico -->
