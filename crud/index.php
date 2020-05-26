@@ -21,6 +21,7 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--  <link rel="shortcut icon" href="#">-->
+    <link rel="shortcut icon" href="https://i.imgur.com/iO8Ro4y.jpg" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="css/estilos.css">
