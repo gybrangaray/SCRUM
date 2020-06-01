@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit-no">
-    <link rel="shortcut icon" href="https://i.imgur.com/iO8Ro4y.jpg" />
+    <link rel="shortcut icon" href="https://i.imgur.com/iO8Ro4y.jpg"  style="border-radius:50%" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">

@@ -2,7 +2,7 @@
     class Conexion{  //clase Conexion
         public static function Conectar(){  //metodo Conectar
             define('servidor', 'localhost'); // Se definen los parametros para que el programa sepa como conectarse
-            define('nombre_bd', 'crud');
+            define('nombre_bd', 'login');
             define('usuario', 'root');
             define('contraseña', '');
             $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');  //variable opciones "arreglo con parametros de las conexiones PDO"
