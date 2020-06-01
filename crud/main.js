@@ -39,11 +39,13 @@ $(document).ready(function(){
       nombre = fila.find('td:eq(1)').text(); //Se captura nombre
       pais = fila.find('td:eq(2)').text();  //Se captura país
       edad = parseInt(fila.find('td:eq(3)').text());  //Se captura edad
+      curp = fila.find('td:eq(4)').text();  //Se captura curp
       
       $("#nombre").val(nombre);  //capturamos el valor que hace referiencia a nombre
       $("#pais").val(pais);      //capturamos el valor que hace referiencia a pais
       $("#edad").val(edad);      //capturamos el valor que hace referiencia a edad
-      opcion = 2 ;   //EDITAR variable opcion se crea para cuando mandemos a nuestro archivo crud vamos a utilizar un switch donde de acuerdo con la operacion Nuevo=1, Editar=2, Eliminar=3 
+      $("#curp").val(curp);      //capturamos el valor que hace referiencia a curp
+      opcion = 2 ;   //EDITAR    --variable opcion se crea para cuando mandemos a nuestro archivo crud vamos a utilizar un switch donde de acuerdo con la operacion Nuevo=1, Editar=2, Eliminar=3 
       $(".modal-header").css("background-color", "#007bff");
       $(".modal-title").text("Editar persona");
       $(".modal-title").css("color", "white");
@@ -78,7 +80,8 @@ $(document).ready(function(){
                                             //cada uno se asigna a su variable correspondiete "id, nombre, pais,edad"
     nombre = $.trim($("#nombre").val());  //con .val() se obtiene el valor que el usuario ingresa en los inputs 
     pais = $.trim($("#pais").val());      // con trim se obtienen los inputs sin espacios
-    edad = $.trim($("#edad").val());     
+    edad = $.trim($("#edad").val()); 
+    curp = $.trim($("#curp").val());     
    //codigo ajax
    $.ajax({
        url: "bd/crud.php",  //archivo con el que se va interactuar es decir enviar y recibir datos 
@@ -88,7 +91,8 @@ $(document).ready(function(){
          nombre:nombre,
          pais:pais,
          edad:edad,
-         id:id, 
+         curp:curp,
+         id:id,
          opcion:opcion
        },
        success: function(data){  //si es exitoso nos devolvera un array situado en archivo crud.php
@@ -97,10 +101,11 @@ $(document).ready(function(){
        nombre = data[1].nombre; 
        pais = data[2].pais;
        edad = data[3].edad;
+       curp = data[4].curp;
        if(opcion == 1){
-           tablaPersonas.row().add([id,nombre,pais,edad]).draw(); // Aquí se dibujan los datos dinamicamente sin la necesidad de recargar la pagina
+           tablaPersonas.row().add([id,nombre,pais,edad,curp]).draw(); // Aquí se dibujan los datos dinamicamente sin la necesidad de recargar la pagina
         }else{  //sino realizara una modificación
-            tablaPersonas.row(fila).data([id,nombre,pais,edad]).draw(); 
+            tablaPersonas.row(fila).data([id,nombre,pais,edad,curp]).draw(); 
         }
     }
     });

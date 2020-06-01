@@ -3,7 +3,7 @@ include_once 'bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar(); //llamando a la método Conectar de la clase Conexion archivo "conexion.php"
 
-$consulta = 'SELECT id, nombre, pais, edad FROM personas';  // también * <-- todo
+$consulta = 'SELECT id, nombre, pais, edad, curp FROM personas';  // también * <-- todo
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -62,6 +62,7 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                                           <td>Nombre</td>
                                           <td>Pais</td>
                                           <td>Edad</td>
+                                          <td>Curp</td>
                                           <td>Acciones</td>
                                       </tr>
                                     </thead>
@@ -74,6 +75,7 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                                           <td><b> <?php echo $dat['nombre'] ?> </b></td>
                                           <td> <?php echo $dat['pais']   ?> </td>
                                           <td> <?php echo $dat['edad']   ?> </td>
+                                          <td style="text-transform:uppercase"> <?php echo $dat['curp']   ?> </td>
                                           <td>
                                         <div class="text-center">
                                                   <div class="btn-group">
@@ -120,6 +122,10 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                                 <div class="form-group">
                                   <label for="edad" class="col-form-label">Edad:</label>
                                   <input required type="number" class="form-control" id="edad" placeholder="Edad">
+                                </div>
+                                <div class="form-group">
+                                  <label for="curp" class="col-form-label" style="text-transform:uppercase">Curp:</label>
+                                  <input required type="text" class="form-control" id="curp" style="text-transform:uppercase" placeholder="Curp">
                                 </div>
                           </div>
                           <div class="modal-footer">
