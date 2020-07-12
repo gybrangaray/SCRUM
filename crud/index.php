@@ -37,7 +37,7 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
     Sistemas de información
   </a>
   <h4 class="display-8 ">¡Bienvenido Usuario: <span class="badge badge-success"><?php echo $_SESSION["s_usuario"]; ?></span>!</h4>
-                    <a  class="btn btn-outline-danger btn-sm center-block" href="../bd/logout.php" role="button">Cerrar sesón</a>
+                    <a  class="btn btn-outline-danger btn-sm center-block" href="../bd/logout.php" role="button">Cerrar sesión</a>
 </nav>
     </header>
     <div class="container">  
