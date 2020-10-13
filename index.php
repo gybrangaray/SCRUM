@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
-    <title>SISINFO | Ingresar</title>
+    <title>SISLOGIN | Ingresar</title>
 </head>
 <body class="inicioSesion">
 <header>
     <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="https://i.imgur.com/iO8Ro4y.jpg" width="30" height="30" style="border-radius:50%" class="d-inline-block align-top" alt="sistema">
-    Sistemas de información
+    Sistema login
   </a>
 </nav>
     </header>

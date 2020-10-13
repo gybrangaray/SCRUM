@@ -25,7 +25,7 @@ $(document).ready(function(){
    $("#btnNuevo").click(function(){
        $("#formPersonas").trigger("reset")  //En esta función llamamos al formulario, para que resetee los campos y no se quede con los valores anteriores
        $(".modal-header").css("background-color", "#28a745");
-       $(".modal-title").text("Agregar persona");
+       $(".modal-title").text("Agregar cliente");
        $(".modal-title").css("color", "white");
        $("#modalCRUD").modal("show");
        id=null; //no enviamos ningun id ya que se genera con el autoincrementable de sql
@@ -37,17 +37,29 @@ $(document).ready(function(){
       fila = $(this).closest("tr");    //con closest("tr") hacemos referencia a fila
       id = parseInt(fila.find('td:eq(0)').text()); // De esta manera capturamos el "id"
       nombre = fila.find('td:eq(1)').text(); //Se captura nombre
-      pais = fila.find('td:eq(2)').text();  //Se captura país
-      edad = parseInt(fila.find('td:eq(3)').text());  //Se captura edad
-      curp = fila.find('td:eq(4)').text();  //Se captura curp
+      calle = fila.find('td:eq(2)').text(); //Se captura calle
+      numero = parseInt(fila.find('td:eq(3)').text());   //Se captura numero
+      colonia = fila.find('td:eq(4)').text(); //Se captura colonia
+      municipio = fila.find('td:eq(5)').text(); //Se captura municipio
+      estado = fila.find('td:eq(6)').text(); //Se captura estado
+      postal = parseInt(fila.find('td:eq(7)').text());  //Se captura postal
+      pais = fila.find('td:eq(8)').text();  //Se captura país
+      edad = parseInt(fila.find('td:eq(9)').text());  //Se captura edad
+      curp = fila.find('td:eq(10)').text();  //Se captura curp
       
       $("#nombre").val(nombre);  //capturamos el valor que hace referiencia a nombre
+      $("#calle").val(calle);  //capturamos el valor que hace referiencia a calle
+      $("#numero").val(numero);  //capturamos el valor que hace referiencia a numero
+      $("#colonia").val(colonia);  //capturamos el valor que hace referiencia a colonia
+      $("#municipio").val(municipio);  //capturamos el valor que hace referiencia a municipio
+      $("#estado").val(estado);  //capturamos el valor que hace referiencia a estado
+      $("#postal").val(postal);  //capturamos el valor que hace referiencia a postal
       $("#pais").val(pais);      //capturamos el valor que hace referiencia a pais
       $("#edad").val(edad);      //capturamos el valor que hace referiencia a edad
       $("#curp").val(curp);      //capturamos el valor que hace referiencia a curp
       opcion = 2 ;   //EDITAR    --variable opcion se crea para cuando mandemos a nuestro archivo crud vamos a utilizar un switch donde de acuerdo con la operacion Nuevo=1, Editar=2, Eliminar=3 
       $(".modal-header").css("background-color", "#007bff");
-      $(".modal-title").text("Editar persona");
+      $(".modal-title").text("Editar cliente");
       $(".modal-title").css("color", "white");
       $("#modalCRUD").modal("show");
    });
@@ -77,9 +89,15 @@ $(document).ready(function(){
    $("#formPersonas").submit(function(e){  //Aquí se hace referencia al forulario que esta compartido por el mismo modal para el "ABC o CRUD"
     e.preventDefault  //para que todo sea sobre la misma pagina y no se recargue
     //Se crean variables para tomar los valores que se cargan en el formulario
-                                            //cada uno se asigna a su variable correspondiete "id, nombre, pais,edad"
+                                            //cada uno se asigna a su variable correspondiete "id, nombre,calle,numero,colonia,municipio,estado,postal, pais,edad,curp"
     nombre = $.trim($("#nombre").val());  //con .val() se obtiene el valor que el usuario ingresa en los inputs 
-    pais = $.trim($("#pais").val());      // con trim se obtienen los inputs sin espacios
+    calle = $.trim($("#calle").val());// con trim se obtienen los inputs sin espacios
+    numero= $.trim($("#numero").val());
+    colonia = $.trim($("#colonia").val());
+    municipio = $.trim($("#municipio").val());
+    estado = $.trim($("#estado").val());
+    postal = $.trim($("#postal").val());
+    pais = $.trim($("#pais").val());  
     edad = $.trim($("#edad").val()); 
     curp = $.trim($("#curp").val());     
    //codigo ajax
@@ -87,8 +105,14 @@ $(document).ready(function(){
        url: "bd/crud.php",  //archivo con el que se va interactuar es decir enviar y recibir datos 
        type: "POST",        //metodo para enviar y recibir "POST"
        dataType: "json",    //datos enviados en formato json
-       data: {            //Aquí se envian las variables "nombre,pais,edad" 
+       data: {            //Aquí se envian las variables "nombre,calle,numero,colonia,municipio,estado,postal, pais,edad,curp" 
          nombre:nombre,
+         calle:calle,
+         numero:numero,
+         colonia:colonia,
+         municipio:municipio,
+         estado:estado,
+         postal:postal,
          pais:pais,
          edad:edad,
          curp:curp,
@@ -97,15 +121,21 @@ $(document).ready(function(){
        },
        success: function(data){  //si es exitoso nos devolvera un array situado en archivo crud.php
       /*  var datos = JSON.parse(data); en este caso no es necesario*/
-       id = data[0].id; // para tener individualizado cada uno (id, "nombre", "pais", edad)
+       id = data[0].id; // para tener individualizado cada uno (id, "nombre","calle", numero, "colonia", "municipio", "estado",codigopostal, "pais", edad,curp)
        nombre = data[1].nombre; 
-       pais = data[2].pais;
-       edad = data[3].edad;
-       curp = data[4].curp;
+       calle = data[2].calle;
+       numero = data[3].numero;
+       colonia = data[4].colonia;
+       municipio = data[5].municipio;
+       estado = data[6].estado;
+       postal = data[7].postal;
+       pais = data[8].pais;
+       edad = data[9].edad;
+       curp = data[10].curp;
        if(opcion == 1){
-           tablaPersonas.row().add([id,nombre,pais,edad,curp]).draw(); // Aquí se dibujan los datos dinamicamente sin la necesidad de recargar la pagina
+           tablaPersonas.row().add([id,nombre,calle,numero,colonia,municipio,estado,postal,pais,edad,curp]).draw(); // Aquí se dibujan los datos dinamicamente sin la necesidad de recargar la pagina
         }else{  //sino realizara una modificación
-            tablaPersonas.row(fila).data([id,nombre,pais,edad,curp]).draw(); 
+            tablaPersonas.row(fila).data([id,nombre,calle,numero,colonia,municipio,estado,postal,pais,edad,curp]).draw(); 
         }
     }
     });

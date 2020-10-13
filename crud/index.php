@@ -3,7 +3,7 @@ include_once 'bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar(); //llamando a la método Conectar de la clase Conexion archivo "conexion.php"
 
-$consulta = 'SELECT id, nombre, pais, edad, curp FROM personas';  // también * <-- todo
+$consulta = 'SELECT id, nombre,calle,numero,colonia,municipio,estado,postal, pais, edad, curp FROM personas';  // también * <-- todo
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -27,14 +27,14 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css">
-    <title>Sistemas de información</title>
+    <title>Sistema Login</title>
 </head>
 <body>
     <header>
     <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="https://i.imgur.com/iO8Ro4y.jpg" width="30" height="30" style="border-radius:50%" class="d-inline-block align-top" alt="sistema">
-    Sistemas de información
+    Sistema Login
   </a>
   <h4 class="display-8 ">¡Bienvenido Usuario: <span class="badge badge-success"><?php echo $_SESSION["s_usuario"]; ?></span>!</h4>
                     <a  class="btn btn-outline-danger btn-sm center-block" href="../bd/logout.php" role="button">Cerrar sesión</a>
@@ -58,8 +58,14 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                                     <br>
                                   <thead class="text-center"> <!-- Encabezado de la tabla-->
                                       <tr>   <!-- tr Filas--> 
-                                           <td>Id</td> <!-- td Columnas-->
+                                          <td>Id</td> <!-- td Columnas-->
                                           <td>Nombre</td>
+                                          <td>Calle</td>
+                                          <td>Número</td>
+                                          <td>Colonia</td>
+                                          <td>Municipio</td>
+                                          <td>Estado</td>
+                                          <td>Código postal</td>
                                           <td>Pais</td>
                                           <td>Edad</td>
                                           <td>Curp</td>
@@ -73,6 +79,12 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                                       <tr id="hover">   
                                           <td > <?php echo $dat['id']     ?></td> 
                                           <td><b> <?php echo $dat['nombre'] ?> </b></td>
+                                          <td> <?php echo $dat['calle']   ?> </td>
+                                          <td> <?php echo $dat['numero']   ?> </td>
+                                          <td> <?php echo $dat['colonia']   ?> </td>
+                                          <td> <?php echo $dat['municipio']   ?> </td>
+                                          <td> <?php echo $dat['estado']   ?> </td>
+                                          <td> <?php echo $dat['postal']   ?> </td>
                                           <td> <?php echo $dat['pais']   ?> </td>
                                           <td> <?php echo $dat['edad']   ?> </td>
                                           <td style="text-transform:uppercase"> <?php echo $dat['curp']   ?> </td>
@@ -114,6 +126,30 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                               <div class="form-group">
                                   <label for="nombre" class="col-form-label">Nombre:</label>
                                   <input required type="text" class="form-control" id="nombre" placeholder="Nombre">
+                                </div>
+                                <div class="form-group">
+                                  <label for="calle" class="col-form-label">Calle:</label>
+                                  <input required type="text" class="form-control" id="calle" placeholder="Calle">
+                                </div>
+                                <div class="form-group">
+                                  <label for="numero" class="col-form-label">Número:</label>
+                                  <input required type="number" class="form-control" id="numero" placeholder="Número">
+                                </div>
+                                <div class="form-group">
+                                  <label for="colonia" class="col-form-label">Colonia:</label>
+                                  <input required type="text" class="form-control" id="colonia" placeholder="Colonia">
+                                </div>
+                                <div class="form-group">
+                                  <label for="municipio" class="col-form-label">Municipio:</label>
+                                  <input required type="text" class="form-control" id="municipio" placeholder="Municipio">
+                                </div>
+                                <div class="form-group">
+                                  <label for="estado" class="col-form-label">Estado:</label>
+                                  <input required type="text" class="form-control" id="estado" placeholder="Estado">
+                                </div>
+                                <div class="form-group">
+                                  <label for="postal" class="col-form-label">Código postal:</label>
+                                  <input required type="number" class="form-control" id="postal" placeholder="Código postal">
                                 </div>
                               <div class="form-group">
                                   <label for="pais" class="col-form-label">País:</label>
