@@ -22,7 +22,7 @@
                 <div class="junbotron text-center">
                     <h1 class="display-4 ">¡Bienvenido!</h1>
                     <h2 class="text-center">Usuario: <span class="badge badge-primary"><?php echo $_SESSION["s_usuario"]; ?></span></h2>
-                    <a  class="btn btn-danger btn-lg center-block" href="../bd/logout.php" role="button">Cerrar sesón</a>
+                    <a  class="btn btn-danger btn-lg center-block" href="../bd/logout.php" role="button">Cerrar sesión</a>
                 </div>
             </div>
         </div>

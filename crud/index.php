@@ -21,20 +21,20 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--  <link rel="shortcut icon" href="#">-->
-    <link rel="shortcut icon" href="https://i.imgur.com/iO8Ro4y.jpg" />
+    <link rel="shortcut icon" href="../img/KyuubinetSolo.png" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="datatables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css">
-    <title>Sistema Login</title>
+    <title>Kyuubinet</title>
 </head>
 <body>
     <header>
     <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="https://i.imgur.com/iO8Ro4y.jpg" width="30" height="30" style="border-radius:50%" class="d-inline-block align-top" alt="sistema">
-    Sistema Login
+  <img src="../img/KyuubinetSoloDos.png" width="170" height="30"  alt="Kyuubinet" >
+    <img src="../img/KyuubinetSolo.png" width="40" height="30"  alt="Kyuubinet" class="girar">
   </a>
   <h4 class="display-8 ">¡Bienvenido Usuario: <span class="badge badge-success"><?php echo $_SESSION["s_usuario"]; ?></span>!</h4>
                     <a  class="btn btn-outline-danger btn-sm center-block" href="../bd/logout.php" role="button">Cerrar sesión</a>

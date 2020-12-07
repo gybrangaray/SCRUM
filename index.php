@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit-no">
-    <link rel="shortcut icon" href="https://i.imgur.com/iO8Ro4y.jpg"  style="border-radius:50%" />
+    <link rel="shortcut icon" href="./img/kyuubinetSolo.png"  />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="plugins/sweetalert2/sweetalert2.min.css">
-    <title>SISLOGIN | Ingresar</title>
+    <title>Kyuubinet | Ingresar</title>
 </head>
+
 <body class="inicioSesion">
 <header>
     <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="https://i.imgur.com/iO8Ro4y.jpg" width="30" height="30" style="border-radius:50%" class="d-inline-block align-top" alt="sistema">
-    Sistema login
+    <img src="./img/KyuubinetSoloDos.png" width="170" height="30"  alt="Kyuubinet" >
+    <img src="./img/KyuubinetSolo.png" width="40" height="30"  alt="Kyuubinet" class="girar">
+
   </a>
 </nav>
     </header>
