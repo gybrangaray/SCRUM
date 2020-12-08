@@ -4,3 +4,17 @@
 #hover:hover{
     background-color: rgb(236, 241, 248);
 }
+
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+.girar{
+    -webkit-animation: 20s rotate linear infinite;
+    animation: 8s rotate linear infinite;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}.girar {
+     -webkit-animation-direction: reverse;
+     animation-direction: reverse;
+}

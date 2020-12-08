@@ -25,41 +25,34 @@ $(document).ready(function(){
    $("#btnNuevo").click(function(){
        $("#formPersonas").trigger("reset")  //En esta función llamamos al formulario, para que resetee los campos y no se quede con los valores anteriores
        $(".modal-header").css("background-color", "#28a745");
-       $(".modal-title").text("Agregar cliente");
+       $(".modal-title").text("Agregar");
        $(".modal-title").css("color", "white");
        $("#modalCRUD").modal("show");
        id=null; //no enviamos ningun id ya que se genera con el autoincrementable de sql
        opcion = 1; // NUEVO
    });
-   var fila; //Esta variable va capturar la fila para editar o eliminar el regitro
+   let fila; //Esta variable va capturar la fila para editar o eliminar el regitro
    //Función para boton  Editar 
    $(document).on("click", ".btnEditar", function(){
       fila = $(this).closest("tr");    //con closest("tr") hacemos referencia a fila
       id = parseInt(fila.find('td:eq(0)').text()); // De esta manera capturamos el "id"
-      nombre = fila.find('td:eq(1)').text(); //Se captura nombre
-      calle = fila.find('td:eq(2)').text(); //Se captura calle
-      numero = parseInt(fila.find('td:eq(3)').text());   //Se captura numero
-      colonia = fila.find('td:eq(4)').text(); //Se captura colonia
-      municipio = fila.find('td:eq(5)').text(); //Se captura municipio
-      estado = fila.find('td:eq(6)').text(); //Se captura estado
-      postal = parseInt(fila.find('td:eq(7)').text());  //Se captura postal
-      pais = fila.find('td:eq(8)').text();  //Se captura país
-      edad = parseInt(fila.find('td:eq(9)').text());  //Se captura edad
-      curp = fila.find('td:eq(10)').text();  //Se captura curp
+      seccion = fila.find('td:eq(1)').text(); // Se captura seccion
+      nombre = fila.find('td:eq(2)').text(); //Se captura nombre
+      descripcion = fila.find('td:eq(3)').text(); //Se captura descripcion
+      sintoma = fila.find('td:eq(4)').text();   //Se captura sintoma
+      solucion = fila.find('td:eq(5)').text(); //Se captura solucion
+      persona = fila.find('td:eq(6)').text(); //Se captura persona
       
+      $("#seccion").val(seccion);  //capturamos el valor que hace referiencia a seccion
       $("#nombre").val(nombre);  //capturamos el valor que hace referiencia a nombre
-      $("#calle").val(calle);  //capturamos el valor que hace referiencia a calle
-      $("#numero").val(numero);  //capturamos el valor que hace referiencia a numero
-      $("#colonia").val(colonia);  //capturamos el valor que hace referiencia a colonia
-      $("#municipio").val(municipio);  //capturamos el valor que hace referiencia a municipio
-      $("#estado").val(estado);  //capturamos el valor que hace referiencia a estado
-      $("#postal").val(postal);  //capturamos el valor que hace referiencia a postal
-      $("#pais").val(pais);      //capturamos el valor que hace referiencia a pais
-      $("#edad").val(edad);      //capturamos el valor que hace referiencia a edad
-      $("#curp").val(curp);      //capturamos el valor que hace referiencia a curp
+      $("#descripcion").val(descripcion);  //capturamos el valor que hace referiencia a descripcion
+      $("#sintoma").val(sintoma);  //capturamos el valor que hace referiencia a sintoma
+      $("#solucion").val(solucion);  //capturamos el valor que hace referiencia a solucion
+      $("#persona").val(persona);  //capturamos el valor que hace referiencia a persona
+      
       opcion = 2 ;   //EDITAR    --variable opcion se crea para cuando mandemos a nuestro archivo crud vamos a utilizar un switch donde de acuerdo con la operacion Nuevo=1, Editar=2, Eliminar=3 
       $(".modal-header").css("background-color", "#007bff");
-      $(".modal-title").text("Editar cliente");
+      $(".modal-title").text("Editar");
       $(".modal-title").css("color", "white");
       $("#modalCRUD").modal("show");
    });
@@ -89,53 +82,42 @@ $(document).ready(function(){
    $("#formPersonas").submit(function(e){  //Aquí se hace referencia al forulario que esta compartido por el mismo modal para el "ABC o CRUD"
     e.preventDefault  //para que todo sea sobre la misma pagina y no se recargue
     //Se crean variables para tomar los valores que se cargan en el formulario
-                                            //cada uno se asigna a su variable correspondiete "id, nombre,calle,numero,colonia,municipio,estado,postal, pais,edad,curp"
+          
+    //cada uno se asigna a su variable correspondiete "id, seccion,nombre,descrpcion,sintoma,solucion,persona"
+    seccion = $.trim($("#seccion").val());
     nombre = $.trim($("#nombre").val());  //con .val() se obtiene el valor que el usuario ingresa en los inputs 
-    calle = $.trim($("#calle").val());// con trim se obtienen los inputs sin espacios
-    numero= $.trim($("#numero").val());
-    colonia = $.trim($("#colonia").val());
-    municipio = $.trim($("#municipio").val());
-    estado = $.trim($("#estado").val());
-    postal = $.trim($("#postal").val());
-    pais = $.trim($("#pais").val());  
-    edad = $.trim($("#edad").val()); 
-    curp = $.trim($("#curp").val());     
+    descripcion = $.trim($("#descripcion").val());// con trim se obtienen los inputs sin espacios
+    sintoma = $.trim($("#sintoma").val());
+    solucion = $.trim($("#solucion").val());
+    persona = $.trim($("#persona").val());
    //codigo ajax
    $.ajax({
        url: "bd/crud.php",  //archivo con el que se va interactuar es decir enviar y recibir datos 
        type: "POST",        //metodo para enviar y recibir "POST"
        dataType: "json",    //datos enviados en formato json
-       data: {            //Aquí se envian las variables "nombre,calle,numero,colonia,municipio,estado,postal, pais,edad,curp" 
+       data: {            //Aquí se envian las variables "seccion, nombre,descripcion,sintoma,solucion, persona" 
+         seccion:seccion,   
          nombre:nombre,
-         calle:calle,
-         numero:numero,
-         colonia:colonia,
-         municipio:municipio,
-         estado:estado,
-         postal:postal,
-         pais:pais,
-         edad:edad,
-         curp:curp,
+         descripcion:descripcion,
+         sintoma:sintoma,
+         solucion:solucion,
+         persona:persona,
          id:id,
          opcion:opcion
        },
        success: function(data){  //si es exitoso nos devolvera un array situado en archivo crud.php
       /*  var datos = JSON.parse(data); en este caso no es necesario*/
-       id = data[0].id; // para tener individualizado cada uno (id, "nombre","calle", numero, "colonia", "municipio", "estado",codigopostal, "pais", edad,curp)
-       nombre = data[1].nombre; 
-       calle = data[2].calle;
-       numero = data[3].numero;
-       colonia = data[4].colonia;
-       municipio = data[5].municipio;
-       estado = data[6].estado;
-       postal = data[7].postal;
-       pais = data[8].pais;
-       edad = data[9].edad;
-       curp = data[10].curp;
+       id = data[0].id; // para tener individualizado cada uno (id, "nombre","seccion", "descripcion","sintoma", "solucion", "persona")
+       seccion = data[1].seccion;
+       nombre = data[2].nombre; 
+       descripcion = data[3].descripcion;
+       sintoma = data[4].sintoma;
+       solucion = data[5].solucion;
+       persona = data[6].persona;
        if(opcion == 1){
-           tablaPersonas.row().add([id,nombre,calle,numero,colonia,municipio,estado,postal,pais,edad,curp]).draw(); // Aquí se dibujan los datos dinamicamente sin la necesidad de recargar la pagina
+           tablaPersonas.row().add([id,seccion,nombre,descripcion,sintoma,solucion,persona]).draw(); // Aquí se dibujan los datos dinamicamente sin la necesidad de recargar la pagina
         }else{  //sino realizara una modificación
-            tablaPersonas.row(fila).data([id,nombre,calle,numero,colonia,municipio,estado,postal,pais,edad,curp]).draw(); 
+            tablaPersonas.row(fila).data([id,seccion,nombre,descripcion,sintoma,solucion,persona]).draw(); 
         }
     }
     });

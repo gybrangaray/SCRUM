@@ -3,7 +3,7 @@ include_once 'bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar(); //llamando a la método Conectar de la clase Conexion archivo "conexion.php"
 
-$consulta = 'SELECT id, nombre,calle,numero,colonia,municipio,estado,postal, pais, edad, curp FROM personas';  // también * <-- todo
+$consulta = 'SELECT id,seccion,nombre,descripcion,sintoma,solucion,persona FROM personas';  // también * <-- todo
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -34,7 +34,7 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
     <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
   <img src="../img/KyuubinetSoloDos.png" width="170" height="30"  alt="Kyuubinet" >
-    <img src="../img/KyuubinetSolo.png" width="40" height="30"  alt="Kyuubinet" class="girar">
+  <img src="../img/KyuubinetSolo.png" width="40" height="30"  alt="Kyuubinet" class="girar">
   </a>
   <h4 class="display-8 ">¡Bienvenido Usuario: <span class="badge badge-success"><?php echo $_SESSION["s_usuario"]; ?></span>!</h4>
                     <a  class="btn btn-outline-danger btn-sm center-block" href="../bd/logout.php" role="button">Cerrar sesión</a>
@@ -43,33 +43,30 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
     <div class="container">  
         <div class="row">
             <div class="col-lg-12"><br>
-                <button id="btnNuevo" type="button" class="btn btn-outline-success" title="Agregar nuevo">
+                <button id="btnNuevo" type="button" class="btn btn-outline-success" title="Agregar | nuevo">
                     <i class="fas fa-user-plus"></i> 
                 </button> <!--Boton nuevo y se le agrega Id por que es unico -->
             </div>
         </div>
     </div>
-
                   <div class="container"> <!-- tabla responsiva-->
+                  <br>
+                     <h4>Control de fallas | Control de cambios</h4>
+                     
                       <div class="row">
                           <div class="col-lg-12">
                             <div class="table-responsive">
                                 <table id="tablaPersonas" class="table table-striped table-bordered table-condensed" style="width:100%">
-                                    <br>
                                   <thead class="text-center"> <!-- Encabezado de la tabla-->
                                       <tr>   <!-- tr Filas--> 
-                                          <td>Id</td> <!-- td Columnas-->
-                                          <td>Nombre</td>
-                                          <td>Calle</td>
-                                          <td>Número</td>
-                                          <td>Colonia</td>
-                                          <td>Municipio</td>
-                                          <td>Estado</td>
-                                          <td>Código postal</td>
-                                          <td>Pais</td>
-                                          <td>Edad</td>
-                                          <td>Curp</td>
-                                          <td>Acciones</td>
+                                          <td><b>Id</td> <!-- td Columnas-->
+                                          <td><b>Sección</td>
+                                          <td><b>Nombre</td>
+                                          <td><b>Descripción</td>
+                                          <td><b>Sintoma</td>
+                                          <td><b>Solución</td>
+                                          <td><b>Persona</td>
+                                          <td><b>Acciones</td>
                                       </tr>
                                     </thead>
                                     <tbody class="text-center" > <!-- Cuerpo de la tabla-->
@@ -78,16 +75,12 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                                       ?>
                                       <tr id="hover">   
                                           <td > <?php echo $dat['id']     ?></td> 
-                                          <td><b> <?php echo $dat['nombre'] ?> </b></td>
-                                          <td> <?php echo $dat['calle']   ?> </td>
-                                          <td> <?php echo $dat['numero']   ?> </td>
-                                          <td> <?php echo $dat['colonia']   ?> </td>
-                                          <td> <?php echo $dat['municipio']   ?> </td>
-                                          <td> <?php echo $dat['estado']   ?> </td>
-                                          <td> <?php echo $dat['postal']   ?> </td>
-                                          <td> <?php echo $dat['pais']   ?> </td>
-                                          <td> <?php echo $dat['edad']   ?> </td>
-                                          <td style="text-transform:uppercase"> <?php echo $dat['curp']   ?> </td>
+                                          <td> <?php echo $dat['seccion'] ?></td>
+                                          <td> <?php echo $dat['nombre']   ?> </td>
+                                          <td> <?php echo $dat['descripcion']   ?> </td>
+                                          <td> <?php echo $dat['sintoma']   ?> </td>
+                                          <td> <?php echo $dat['solucion']   ?> </td>
+                                          <td> <?php echo $dat['persona']   ?> </td>
                                           <td>
                                         <div class="text-center">
                                                   <div class="btn-group">
@@ -124,44 +117,28 @@ if($_SESSION['s_usuario'] === null){   //si la variable de sesión es nula
                       <form id="formPersonas"> <!--Mismo MODAL para distintas acciones ("NUEVO, EDITAR, ELIMINAR") -->
                           <div class="modal-body"><!--todos los datos de los inputs seran enviados a la base de datos por medio de la etiqueta <form>-->
                               <div class="form-group">
-                                  <label for="nombre" class="col-form-label">Nombre:</label>
+                                  <label for="nombre" class="col-form-label">Sección:</label>
+                                  <input required type="text" class="form-control" id="seccion" placeholder="Sección">
+                                </div>
+                                <div class="form-group">
+                                  <label for="calle" class="col-form-label">Nombre:</label>
                                   <input required type="text" class="form-control" id="nombre" placeholder="Nombre">
                                 </div>
                                 <div class="form-group">
-                                  <label for="calle" class="col-form-label">Calle:</label>
-                                  <input required type="text" class="form-control" id="calle" placeholder="Calle">
+                                  <label for="numero" class="col-form-label">Descripción:</label>
+                                  <input required type="text" class="form-control" id="descripcion" placeholder="Descripción">
                                 </div>
                                 <div class="form-group">
-                                  <label for="numero" class="col-form-label">Número:</label>
-                                  <input required type="number" class="form-control" id="numero" placeholder="Número">
+                                  <label for="colonia" class="col-form-label">Sintoma:</label>
+                                  <input required type="text" class="form-control" id="sintoma" placeholder="Sintoma">
                                 </div>
                                 <div class="form-group">
-                                  <label for="colonia" class="col-form-label">Colonia:</label>
-                                  <input required type="text" class="form-control" id="colonia" placeholder="Colonia">
+                                  <label for="municipio" class="col-form-label">Solución:</label>
+                                  <input required type="text" class="form-control" id="solucion" placeholder="Solución">
                                 </div>
                                 <div class="form-group">
-                                  <label for="municipio" class="col-form-label">Municipio:</label>
-                                  <input required type="text" class="form-control" id="municipio" placeholder="Municipio">
-                                </div>
-                                <div class="form-group">
-                                  <label for="estado" class="col-form-label">Estado:</label>
-                                  <input required type="text" class="form-control" id="estado" placeholder="Estado">
-                                </div>
-                                <div class="form-group">
-                                  <label for="postal" class="col-form-label">Código postal:</label>
-                                  <input required type="number" class="form-control" id="postal" placeholder="Código postal">
-                                </div>
-                              <div class="form-group">
-                                  <label for="pais" class="col-form-label">País:</label>
-                                  <input required type="text" class="form-control" id="pais" placeholder="País">
-                                </div>
-                                <div class="form-group">
-                                  <label for="edad" class="col-form-label">Edad:</label>
-                                  <input required type="number" class="form-control" id="edad" placeholder="Edad">
-                                </div>
-                                <div class="form-group">
-                                  <label for="curp" class="col-form-label" style="text-transform:uppercase">Curp:</label>
-                                  <input required type="text" class="form-control" id="curp" style="text-transform:uppercase" placeholder="Curp">
+                                  <label for="estado" class="col-form-label">Persona:</label>
+                                  <input required type="text" class="form-control" id="persona" placeholder="Persona">
                                 </div>
                           </div>
                           <div class="modal-footer">
